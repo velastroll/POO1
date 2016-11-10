@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ProductoTest {
-
+	
 	@Test
 	public void testInicializacionArgumentoValido() {
 		Producto p = new Producto ("66666666666", "Lays", 0.35);
