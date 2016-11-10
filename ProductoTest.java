@@ -8,41 +8,30 @@ public class ProductoTest {
 
 	@Test
 	public void testInicializacionArgumentoValido() {
-		Producto p = new Producto ("66666666666", "Lays");
+		Producto p = new Producto ("66666666666", "Lays", 0.35);
 		assertEquals(p.getUPC(), "666666666662");
 		assertEquals(p.getNombre(), "Lays");
-		assertEquals(p.getPrice(), 0, 0.01);
-		assertEquals(p.getUnidades(), 0);
+		assertEquals(p.getPVP(), 0.35, 0.01);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void testInicializacionArgumentoCodeNoValidoPrincipio(){
-		Producto p = new Producto ("/666666666", "Pringles");
+		Producto p = new Producto ("/666666666", "Pringles", 0.35);
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testInicializacionArgumentoCodeNoValidoFinal(){
-		Producto p = new Producto ("6666666666:", "Pringles");
-	}
-	
-	@Test
-	public void testInicializacion2ArgumentoValido() {
-		Producto p = new Producto ("66666666666", "Lays", 12, 5);
-		assertEquals(p.getUPC(), "666666666662");
-		assertEquals(p.getNombre(), "Lays");
-		assertEquals(p.getPrice(), 12, 0.01);
-		assertEquals(p.getUnidades(), 5);
+		Producto p = new Producto ("6666666666:", "Pringles", 0.35);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void testInicializacion2ArgumentoNoValidoPrecioNegativo(){
-		Producto p = new Producto ("6666666666", "Pringles", -0.01, 5);
-	}
-	
-	@Test (expected = IllegalArgumentException.class)
-	public void testInicializacion2ArgumentoNoValidoUnidadesNegativas(){
-		Producto p = new Producto ("66666666666", "Pringles", 3, -1);
+		Producto p = new Producto ("6666666666", "Pringles", -0.01);
 	}
 
-	
+	@Test (expected=IllegalArgumentException.class)
+	public void testCambiarPVP_ArgumentoNegativo(){
+		Producto p = new Producto ("66666666666", "Lays", 0.35);
+		p.setPVP(-0.01);
+	}
 }

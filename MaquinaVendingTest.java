@@ -16,7 +16,7 @@ public class MaquinaVendingTest {
 		
 		
 		
-		maq.setProductoEnMaquina(1,"Lays", 5);
+		//maq.setProductoEnMaquina(1,"Lays", 5);
 		maq.setProductoEnMaquina(1, 1, "66666666666", "Lays", 0.35, 7);
 		maq.setProductoEnMaquina(1, 2, "66666666666", "Lays", 0.35, 3);
 		assertEquals(maq.getUnidadesDisponiblesEnCasilla(1,1), 7);

@@ -19,7 +19,7 @@ public class MaquinaVending {
 		posicion = new Producto[fila][columna];
 		for (int i = 0; i<(fila); i++){
 			for (int j = 0; j<(columna); j++){
-				posicion[i][j] = new Producto ("00000000000", "vacio", 0, 0);
+				posicion[i][j] = new Producto ("00000000000", "vacio", 0);
 			}
 		}
 	}
