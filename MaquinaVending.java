@@ -1,6 +1,12 @@
 package uva.poo.entrega1;
 import fabricante.externo.tarjetas.TarjetaMonedero;
 
+
+/**
+ * 
+ * @author alvvela - javhelg
+ *
+ */
 public class MaquinaVending {
 	
 	private int num_filas;
@@ -16,7 +22,7 @@ public class MaquinaVending {
 	 * 				row must be > 0.
 	 * 
 	 */
-	public MaquinaVending (s) throws IllegalArgumentException {
+	public MaquinaVending (int num_filas) throws IllegalArgumentException {
 		if (num_filas<1){ throw new IllegalArgumentException ("La filas minimas son 1.");}
 		this.num_filas=num_filas;
 		productoDeLaFila = new Producto[num_filas];
@@ -27,7 +33,6 @@ public class MaquinaVending {
 		}
 	}
 
-	
 	/**
 	 * Dada una fila, se untroducen unidades de un determinado producto.
 	 * 
@@ -99,7 +104,6 @@ public class MaquinaVending {
 		productoDeLaFila[fila].setPVP(precio);
 	}
 	
-	
 	/**
 	 * Devuelve el precio de una unidad de una determinada fila.
 	 * 
@@ -155,4 +159,5 @@ public class MaquinaVending {
 		}
 		return compra;
 	}		
+
 }

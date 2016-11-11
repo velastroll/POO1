@@ -1,5 +1,11 @@
 package uva.poo.entrega1;
 
+
+/**
+ * 
+ * @author alvvela - javhelg
+ *
+ */
 public class Producto {
 
 	private String nombre;
@@ -107,4 +113,5 @@ public class Producto {
 	public String getNombre() {
 		return nombre;
 	}
+
 }
