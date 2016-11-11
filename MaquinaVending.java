@@ -19,7 +19,7 @@ public class MaquinaVending {
 	 * @param num_filas 
 	 * 				[int] row number of the machine.
 	 * @throws IllegalArgumentException
-	 * 				row must be > 0.
+	 * 				row must be bigger than 0.
 	 * 
 	 */
 	public MaquinaVending (int num_filas) throws IllegalArgumentException {
