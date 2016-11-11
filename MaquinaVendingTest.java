@@ -8,7 +8,7 @@ public class MaquinaVendingTest {
 	@Test
 	public void testImplementacionMaquinaVendingValida() {
 		MaquinaVending maq = new MaquinaVending (2);
-		System.out.print("Goodbay World!");
+		
 		// Implementamos MaqVen
 		// getunidades
 		// getPrecio
