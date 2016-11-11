@@ -16,7 +16,7 @@ public class MaquinaVending {
 	 * 				row must be > 0.
 	 * 
 	 */
-	public MaquinaVending (int num_filas) throws IllegalArgumentException {
+	public MaquinaVending (s) throws IllegalArgumentException {
 		if (num_filas<1){ throw new IllegalArgumentException ("La filas minimas son 1.");}
 		this.num_filas=num_filas;
 		productoDeLaFila = new Producto[num_filas];
