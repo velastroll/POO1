@@ -9,11 +9,11 @@ public class Producto {
 	/**
 	 * 
 	 * @param code:
-	 *            Necessary to make UPC code
+	 *            [String] Necessary to make UPC code
 	 * @param nombre:
-	 *            Product name.
+	 *            [String] Product name.
 	 * @param pvp:
-	 *            Product price.
+	 *            [double] Product price.
 	 *
 	 * @throws IllegalArgumentException
 	 *			   String name cannot be empty.
@@ -40,8 +40,7 @@ public class Producto {
 	 * Implementation of the UPC code. Private because nobodies can change UPC.
 	 * 
 	 * @param code
-	 *            Necessary to calculate UPC code.
-	 * @return UPC code.
+	 *            [String] UPC code.
 	 * @throws IllegalArgumentException
 	 *             Code must be 11 digits.
 	 * 		 	   Code must be all numbers
@@ -71,7 +70,7 @@ public class Producto {
 
 	/**
 	 * 
-	 * @return (Type String) UPC product code
+	 * @return [String] UPC product code
 	 */
 	public String getUPC() {
 		return UPC;
@@ -82,7 +81,7 @@ public class Producto {
 	 * Change product price
 	 * 
 	 * @param pvp
-	 *			new product price
+	 *			[int] new product price
 	 * @throws IllegalArgumentException
 	 *			Price must be positive.
 	 */
@@ -95,7 +94,7 @@ public class Producto {
 
 	/**
 	 * 
-	 * @return (Type double) Product price
+	 * @return [double] Product price
 	 */
 	public double getPVP() {
 		return pvp;
@@ -103,7 +102,7 @@ public class Producto {
 
 	/**
 	 * 
-	 * @return (Type String) Product name.
+	 * @return [String] Product name.
 	 */
 	public String getNombre() {
 		return nombre;
