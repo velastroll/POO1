@@ -47,6 +47,11 @@ public class MaquinaVendingTest {
 	}
 	
 	
+	@Test (expected = IllegalArgumentException.class)
+	public void testImplementacionMaquinaVending_NoValida() {
+		MaquinaVending maq = new MaquinaVending (0);
+	}
+	
 	/*
 	 * COMPRA NO VALIDA
 	 */
