@@ -39,7 +39,7 @@ public class MaquinaVending {
 	 * @param fila
 	 * 				[int] Fila en la que se desea operar. [0, num_fila-1]
 	 * @param producto
-	 * 				[Producto] Contiene las características de un determinado producto.
+	 * 				[Producto] Contiene las caracterÃ­sticas de un determinado producto.
 	 * @param unidades
 	 * 				[int] Unidades que se van a introducir de ese determinado producto.
 	 * @throws IllegalArgumentException 
@@ -67,7 +67,7 @@ public class MaquinaVending {
 	 * 
 	 */
 	public void setUnidades(int fila, int unidades) throws IllegalArgumentException {
-		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + "].\n");	}
+		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + ").\n");	}
 		if (unidades < 0){					throw new IllegalArgumentException ("Debe introducir alguna unidad entera positiva.\n");		}
 		unidadesDeLaFila[fila] = unidades;
 	}
@@ -81,7 +81,7 @@ public class MaquinaVending {
 	 * 				La fila tiene que estar en el dominio [0, num_filas)
 	 */
 	public int getUnidadesDisponiblesDeLaFila(int fila) throws IllegalArgumentException {
-		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + "].\n");	}
+		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + ").\n");	}
 		return unidadesDeLaFila[fila];
 	}
 	
@@ -98,7 +98,7 @@ public class MaquinaVending {
 	 *  
 	 */
 	public void setPrecio (int fila, double precio) throws IllegalArgumentException {
-		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + "].\n");	}
+		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + ").\n");	}
 		if (precio<0) { 					throw new IllegalArgumentException ("El precio no puede ser negativo");							}
 		
 		productoDeLaFila[fila].setPVP(precio);
@@ -115,7 +115,7 @@ public class MaquinaVending {
 	 * 
 	 */
 	public double getPrecio (int fila)  throws IllegalArgumentException {
-		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + "].\n");	}
+		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + ").\n");	}
 		return productoDeLaFila[fila].getPVP();
 	}
 	
@@ -129,7 +129,7 @@ public class MaquinaVending {
 	 * 				La fila tiene que estar en el dominio [0, num_filas)
 	 */
 	public String getNombreProductoDeLaFila(int fila)  throws IllegalArgumentException {
-		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + "].\n");	}
+		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + ").\n");	}
 		return productoDeLaFila[fila].getNombre();
 	}
 	
@@ -148,7 +148,7 @@ public class MaquinaVending {
 	 * 
 	 */
 	public boolean comprarProductoDeLaFila(int fila, TarjetaMonedero tarjeta, String credencial)   throws IllegalArgumentException {
-		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + "].\n");	}
+		if (num_filas<=fila || fila<0){ 	throw new IllegalArgumentException ("Las filas posibles estan en [0, " + num_filas + ").\n");	}
 		boolean compra = false;
 		if (unidadesDeLaFila[fila]>0){
 			if (productoDeLaFila[fila].getPVP() <= tarjeta.getSaldoActual()){
