@@ -1,10 +1,13 @@
 package uva.poo.entrega1;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 import fabricante.externo.tarjetas.TarjetaMonedero;
+
 /**
  * 
- * @author alvvela - javhelg
+ * @author alvvela
+ * @author javhelg
  *
  */
 public class MaquinaVendingTest {
@@ -45,7 +48,6 @@ public class MaquinaVendingTest {
 		assertEquals(maq.getUnidadesDisponiblesDeLaFila(5), 1);
 		assertTrue(maq.comprarProductoDeLaFila(5, card, "6Z1y00Nm31aA-571"));
 	}
-	
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testImplementacionMaquinaVending_NoValida() {

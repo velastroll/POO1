@@ -6,7 +6,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author alvvela - javhelg
+ * @author alvvela
+ * @author javhelg
  *
  */
 public class ProductoTest {

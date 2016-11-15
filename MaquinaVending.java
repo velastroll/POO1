@@ -4,7 +4,8 @@ import fabricante.externo.tarjetas.TarjetaMonedero;
 
 /**
  * 
- * @author alvvela - javhelg
+ * @author alvvela
+ * @author javhelg
  *
  */
 public class MaquinaVending {

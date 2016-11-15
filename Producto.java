@@ -3,7 +3,8 @@ package uva.poo.entrega1;
 
 /**
  * 
- * @author alvvela - javhelg
+ * @author alvvela
+ * @author javhelg
  *
  */
 public class Producto {
