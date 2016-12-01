@@ -1,64 +1,84 @@
 package uva.poo.entrega1;
 
-
-/**
- * 
- * @author alvvela
- * @author javhelg
- *
- */
 public class Producto {
 
 	private String nombre;
 	private String UPC;
-	private double pvp = 0;
+	private double precio = 0;
+	private int unidades = 0;
+
+	/**
+	 * Implementation of a new product.
+	 * 
+	 * @param code:
+	 *            Necessary to calculate UPC code.
+	 * @param nombre:
+	 *            product name, can not be changed.
+	 * @throws IllegalArgumentException
+	 *             The code must be 12 digits.
+	 */
+	public Producto(String UPC, String nombre) throws IllegalArgumentException {
+		checkUPC(UPC);
+		if (UPC.length() != 12) {
+			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
+		}
+		for (int c = 0; c < 12; c++) {
+			if (UPC.charAt(c) < 48 || UPC.charAt(c) > 57) {
+				throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
+			}
+		}
+		this.UPC = UPC;
+		this.nombre = nombre;
+	}
 
 	/**
 	 * 
 	 * @param code:
-	 *            [String] Necessary to make UPC code
+	 *            Necessary to make UPC code
 	 * @param nombre:
-	 *            [String] Product name.
-	 * @param pvp:
-	 *            [double] Product price.
-	 *
+	 *            Product name.
+	 * @param precio:
+	 *            Product price.
+	 * @param unidades:
+	 *            Available stock.
 	 * @throws IllegalArgumentException
-	 *			   String name cannot be empty.
-	 *             Code length must be 11
-	 *             PVP must be positive
+	 *             non valid data.
 	 */
-	public Producto(String code, String nombre, double pvp) throws IllegalArgumentException {
-		if (nombre.length() == 0) {
-			throw new IllegalArgumentException("Inserte un nombre para el producto.");
+	public Producto(String UPC, String nombre, double precio, int unidades) throws IllegalArgumentException {
+		checkUPC(UPC);
+		if (UPC.length() != 12) {
+			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
 		}
-		if (code.length() != 11) {
-			throw new IllegalArgumentException("El codigo debe ser de 11 digitos.");
-		}
-		if (pvp < 0) {
+		if (precio < 0) {
 			throw new IllegalArgumentException("El precio no puede ser negativo.");
 		}
+		if (unidades < 0) {
+			throw new IllegalArgumentException("Las unidades no pueden ser negativas.");
+		}
 
-		this.UPC = setUPC(code);
+		this.UPC = UPC;
 		this.nombre = nombre;
-		this.pvp = pvp;
+		this.precio = precio;
+		this.unidades = unidades;
 	}
 
 	/**
-	 * Implementation of the UPC code. Private because nobodies can change UPC.
+	 * Function that creates UPC code.
 	 * 
 	 * @param code
-	 *            [String] UPC code.
+	 *            Necessary to calculate UPC code.
+	 * @return UPC code.
 	 * @throws IllegalArgumentException
-	 *             Code must be 11 digits.
-	 * 		 	   Code must be all numbers
+	 *             Code must be 12 digits and numbers.
+	 * 		 
 	 * 				
 	 */
-	private String setUPC(String code) throws IllegalArgumentException {
+	private void checkUPC(String code) throws IllegalArgumentException {
 
-		if (code.length() != 11) {
-			throw new IllegalArgumentException("El codigo debe ser de 11 digitos.");
+		if (code.length() != 12) {
+			throw new IllegalArgumentException("El codigo debe ser de 12 digitos.");
 		}
-		for(int i=0;i<11;i++){
+		for(int i=0;i<12;i++){
 			if(code.charAt(i)<48 || code.charAt(i)>57){
 				throw new IllegalArgumentException("El codigo tiene que ser numeros.");
 			}
@@ -72,47 +92,85 @@ public class Producto {
 		int m = ((last_digito / 10) + 1) * 10;
 		last_digito = m - last_digito;
 		strUPC = strUPC + Integer.toString(last_digito);
-		return strUPC;
+		if (last_digito!=(strUPC.charAt(11)-48)){
+			throw new IllegalArgumentException("El codigo UPC es incorrecto");
+		}
 	}
 
 	/**
 	 * 
-	 * @return [String] UPC product code
+	 * @return the UPC product code
 	 */
 	public String getUPC() {
-		return UPC;
+		return this.UPC;
+	}
+
+	/**
+	 * Set the available stock in a determinate field.
+	 * 
+	 * @param unidades:
+	 *            new product units.
+	 * @throws IllegalArgumentException
+	 *             The units must be positives.
+	 */
+	public void setUnidades(int unidades) throws IllegalArgumentException {
+		if (unidades < 0) {
+			throw new IllegalArgumentException("Las unidades no pueden ser negativas.");
+		}
+		this.unidades = unidades;
+	}
+
+	/**
+	 * 
+	 * @return the available stock in a determinate field
+	 */
+	public int getUnidades() {
+		return this.unidades;
+	}
+
+	/**
+	 * @param change
+	 *            is the number of units changed.
+	 * @throws IllegalArgumentException
+	 *             Units + the units changed can not be less than zero.
+	 */
+	public void changeUnidades(int change) throws IllegalArgumentException {
+		if (change + unidades < 0) {
+			throw new IllegalArgumentException("No puedes quitar mas de las que hay.");
+		}
+		unidades += change;
 	}
 
 	/**
 	 * 
 	 * Change product price
 	 * 
-	 * @param pvp
-	 *			[int] new product price
+	 * @param price
+	 *            new product value
 	 * @throws IllegalArgumentException
-	 *			Price must be positive.
+	 *             Price must be positive.
 	 */
-	public void setPVP(double pvp) throws IllegalArgumentException {
-		if (pvp < 0) {
+	public void setPrice(double price) throws IllegalArgumentException {
+		if (price < 0) {
 			throw new IllegalArgumentException("El precio no puede ser negativo.");
 		}
-		this.pvp = pvp;
+		precio = price;
 	}
 
 	/**
 	 * 
-	 * @return [double] Product price
+	 * @return Product price
 	 */
-	public double getPVP() {
-		return pvp;
+	public double getPrice() {
+		return this.precio;
 	}
 
 	/**
 	 * 
-	 * @return [String] Product name.
+	 * @return Product name in a String.
 	 */
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
-
+	
 }
